@@ -10,7 +10,7 @@ profileRouter.get("/profile", userAuth, async (req, res) => {
 
         res.send(user);
     } catch (err) {
-        res.status(400).send({sucess:false, msg: err.message})
+        res.status(400).send({success:false, msg: err.message})
     }
     
 });
@@ -26,7 +26,7 @@ profileRouter.patch("/profile/edit", userAuth, async (req, res) => {
         Object.keys(req.body).forEach((key) => (loogedInUser[key] = req.body[key]));
 
         const updatedUserData = await loogedInUser.save();
-        res.status(200).send({sucess: true, msg: "Your profile updated successfully", data: updatedUserData});
+        res.status(200).send({success: true, msg: "Your profile updated successfully", data: updatedUserData});
     } catch (err) {
         res.status(400).send({success: false, mag: err.message});
     }
